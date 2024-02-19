@@ -6,10 +6,10 @@ const dbConnection = () => {
     .then((conn) => {
       console.log("connection to db success");
     })
-    .catch((err) => {
-      console.error(`error db: ${err}`);
-      process.exit(1);
-    });
+    // .catch((err) => {
+    //   console.error(`error db: ${err}`);
+    //   process.exit(1);
+    // });
 };
 
 export { dbConnection };
