@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import { dbConnection } from "./config/database.js";
 import { router as categoryRoute } from "./routes/categoryRoute.js";
+import { router as subCategoryRoute } from "./routes/subCategoryRoute.js";
 import { apiError } from "./utils/apiErrorHandler.js";
 import { globalError } from "./middleware/errorMiddleware.js";
 dotenv.config({ path: "config.env" });
@@ -17,7 +18,9 @@ if (process.env.NODE_ENV == "development") {
   console.log(`currently running in ${process.env.NODE_ENV} mode`);
 }
 
-app.use("/categories", categoryRoute);
+app.use("/categories", categoryRoute, subCategoryRoute);
+// app.use("/subcategories", subCategoryRoute);
+
 app.all("*", (req, res, next) => {
   next(new apiError(`can't find this route: ${req.originalUrl}`, 400));
 });

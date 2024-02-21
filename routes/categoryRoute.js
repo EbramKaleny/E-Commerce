@@ -7,7 +7,7 @@ const router = express.Router();
 router
   .route("/")
   .get(controllers.getCategory)
-  .post(controllers.postNewCategory);
+  .post(validators.createCategoryRules,controllers.postNewCategory);
 router
   .route("/:id")
   .get(validators.getSpecificCategoryRules, controllers.getSpecficCategory)
