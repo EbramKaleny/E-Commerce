@@ -2,15 +2,15 @@ import express from "express";
 import * as controllers from "../controllers/subCategoryControllers.js";
 import * as validators from "../utils/validators/subCategoryValidators.js";
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
-  .route("/subcategories/")
+  .route("/")
   .get(controllers.getSubCategory)
   .post(validators.createSubCategoryRules, controllers.postNewSubCategory);
 
 router
-  .route("/subcategories/:id")
+  .route("/:id")
   .get(
     validators.getSpecificSubCategoryRules,
     controllers.getSpecficSubCategory
